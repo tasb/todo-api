@@ -6,6 +6,9 @@
 version: 2
 updates:
   - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/src" # Location of package manifests
+    directories:
+      - "/src/TodoAPI"
+      - "/src/TodoAPI.Tests"
+      - "/src/TodoWebapp"
     schedule:
       interval: "weekly"
