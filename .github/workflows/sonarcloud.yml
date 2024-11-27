@@ -58,7 +58,7 @@ jobs:
             -Dsonar.projectKey=tasb_todo-api
             -Dsonar.organization=tasb-1
             -Dsonar.scm.provider=git
-            -Dsonar.sources=src/**
+            -Dsonar.sources=src/TodoAPI,src/TodoAPI.Tests,src/TodoWebapp
             # Comma-separated paths to directories containing main source files.
             
             # optional, default is project base directory
