@@ -66,7 +66,15 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        args: --sarif-file-output=snyk.sarif --file=src/TodoAPI/TodoAPI.csproj
+        args: --sarif-file-output=snyk.sarif --file=src/TodoAPI/TodoAPI.csproj --package-manager=nuget
+
+    - name: Run Snyk to check for vulnerabilities on Unit Tests
+      uses: snyk/actions/dotnet@master
+      continue-on-error: true # To make sure that SARIF upload gets called
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --sarif-file-output=snyk.sarif --file=src/TodoAPI.Tests/TodoAPI.Tests.csproj --package-manager=nuget
     
     - name: Upload result to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v2
