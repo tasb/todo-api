@@ -42,6 +42,7 @@ jobs:
   security-analysis:
     name: Security Analysis
     runs-on: ubuntu-latest
+    needs: build
 
     permissions:
       contents: read
