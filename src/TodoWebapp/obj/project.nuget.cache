@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "uU9Wtu+r5E3J4BTql2iacOSDgNputBrwyP0gkLZl4iqkmXdQI2i7reWBNTF7ZwQch8sqcjcWGQri45RkjxAYwg==",
+  "success": true,
+  "projectFilePath": "/Users/tiago.bernardo/work/training/todo-api/src/TodoWebapp/TodoWebapp.csproj",
+  "expectedPackageFiles": [
+    "/Users/tiago.bernardo/.nuget/packages/microsoft.netcore.app.ref/6.0.25/microsoft.netcore.app.ref.6.0.25.nupkg.sha512",
+    "/Users/tiago.bernardo/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.25/microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512",
+    "/Users/tiago.bernardo/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.25/microsoft.netcore.app.host.osx-arm64.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
