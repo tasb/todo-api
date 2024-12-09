@@ -74,7 +74,7 @@ jobs:
         sarif_file: snyk.sarif
 
     - name: Publish security report to artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: snyk.sarif
     
@@ -152,6 +152,6 @@ jobs:
           sarif_file: results.sarif
 
       - name: Publish security report to artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: results.sarif
