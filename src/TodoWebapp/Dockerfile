@@ -4,6 +4,9 @@ EXPOSE 80
 LABEL app=todo-app
 ENV ASPNETCORE_URLS=http://+:80
 
+FROM node:14.1.0 AS node-build
+WORKDIR /src
+
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
 COPY ["TodoWebapp.csproj", ""]

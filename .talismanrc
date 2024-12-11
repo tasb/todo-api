@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: .gitignore
+  checksum: f2970471ba85bfe6539d6479455b24f3ba37950ba20fac2e7a3f05b0363aa2e4
 - filename: deploy/manifests/todo-app-api-dep.yaml
   checksum: a6cec6b96a10d53738dd9fa3fb345ae56bc380b431fffd4036e87fd2cd327153
 - filename: deploy/manifests/todo-app-secret.yaml
