@@ -235,7 +235,7 @@ jobs:
       ARTIFACT_NAME: todo-api
     defaults:
       run:
-        working-directory: ./deploy/terraform
+        working-directory: ./deploy/terraform/todo-api
 
     steps:
     - uses: actions/checkout@v3
