@@ -227,6 +227,7 @@ jobs:
       id-token: write
       contents: read
       checks: write
+      issues: write
     env: # these variables will be set as environment variables for script actions and are needed to run Terraform commands
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
