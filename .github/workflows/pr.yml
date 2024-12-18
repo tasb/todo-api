@@ -298,6 +298,6 @@ jobs:
         target: 'https://tbernardo-todoapp-api-dast.azurewebsites.net/swagger/v1/swagger.json'
         format: 'openapi'
 
-    - name: terraform destroy
-      run: |
-        terraform destroy tfplan
+    # - name: terraform destroy
+    #   run: |
+    #     terraform destroy tfplan
