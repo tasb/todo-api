@@ -1,6 +1,6 @@
 fileignoreconfig:
 - filename: .github/workflows/pr.yml
-  checksum: 7764e7aab679f1ea096b23eb4b608a2c56c1161c54b4b24dafa810f5ef2ba62f
+  checksum: 2c72faa22e2a32078a4ccf4b3cb0ae774a97818f75801f108a0551cccfb57481
 - filename: .gitignore
   checksum: f2970471ba85bfe6539d6479455b24f3ba37950ba20fac2e7a3f05b0363aa2e4
 - filename: deploy/manifests/todo-app-api-dep.yaml

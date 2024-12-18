@@ -239,61 +239,65 @@ jobs:
         working-directory: ./deploy/terraform/todo-api
 
     steps:
-    # - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-    # - uses: actions/download-artifact@v4
-    #   with:
-    #     name: ${{ env.ARTIFACT_NAME }}
-    #     path: ./${{ env.ARTIFACT_NAME }}
+    - uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: ./${{ env.ARTIFACT_NAME }}
     
-    # - uses: azure/login@v1
-    #   with:
-    #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
-    #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-    #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    - uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     
-    # - uses: hashicorp/setup-terraform@v2
-    #   with:
-    #     terraform_wrapper: false
+    - uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_wrapper: false
 
-    # - name: terraform init
-    #   run: terraform init
+    - name: terraform init
+      run: terraform init
     
-    # - name: terraform plan
-    #   id: tfplan
-    #   run: terraform plan -var="dbPassword=${{ secrets.DB_PASSWORD }}" -var="env=dast" -out=tfplan
+    - name: terraform plan
+      id: tfplan
+      run: terraform plan -var="dbPassword=${{ secrets.DB_PASSWORD }}" -var="env=dast" -out=tfplan
 
-    # - name: Terraform Plan Status
-    #   if: steps.tfplan.outcome == 'failure'
-    #   run: exit 1
+    - name: Terraform Plan Status
+      if: steps.tfplan.outcome == 'failure'
+      run: exit 1
 
-    # - name: terraform apply
-    #   run: |
-    #     terraform apply tfplan
-    #     echo "WEBAPP_NAME=$(terraform output -raw webappName)" >> $GITHUB_ENV
-    #     echo "DB_ADDRESS=$(terraform output -raw dbAddress)" >> $GITHUB_ENV
-    #     echo "WEBAPP_URL=$(terraform output -raw webappUrl)" >> $GITHUB_ENV
+    - name: terraform apply
+      run: |
+        terraform apply tfplan
+        echo "WEBAPP_NAME=$(terraform output -raw webappName)" >> $GITHUB_ENV
+        echo "DB_ADDRESS=$(terraform output -raw dbAddress)" >> $GITHUB_ENV
+        echo "WEBAPP_URL=$(terraform output -raw webappUrl)" >> $GITHUB_ENV
 
-    # - name: 'Azure webapp deploy - Staging'
-    #   id: stg-deploy
-    #   uses: azure/webapps-deploy@v2
-    #   with: 
-    #     app-name: ${{ env.WEBAPP_NAME }}
-    #     package: ./${{ env.ARTIFACT_NAME }}
+    - name: 'Azure webapp deploy - Staging'
+      id: stg-deploy
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.WEBAPP_NAME }}
+        package: ./${{ env.ARTIFACT_NAME }}
   
-    # - name: 'Configure azure webapp - Staging'
-    #   uses: azure/appservice-settings@v1
-    #   with:
-    #     app-name: ${{ env.WEBAPP_NAME }}
-    #     mask-inputs: false
-    #     app-settings-json: '[{"name": "ConnectionStrings__TodosDb","value": "Server=${{ env.DB_ADDRESS }};Database=TodoDB;Port=5432;User Id=dbadmin;Password=${{ secrets.DB_PASSWORD }};Ssl Mode=VerifyFull;","slotSetting": true}, {"name": "ASPNETCORE_ENVIRONMENT", "value": "Development"}]'
+    - name: 'Configure azure webapp - Staging'
+      uses: azure/appservice-settings@v1
+      with:
+        app-name: ${{ env.WEBAPP_NAME }}
+        mask-inputs: false
+        app-settings-json: '[{"name": "ConnectionStrings__TodosDb","value": "Server=${{ env.DB_ADDRESS }};Database=TodoDB;Port=5432;User Id=dbadmin;Password=${{ secrets.DB_PASSWORD }};Ssl Mode=VerifyFull;","slotSetting": true}, {"name": "ASPNETCORE_ENVIRONMENT", "value": "Development"}]'
   
-    # - name: logout
-    #   run: |
-    #     az logout
+    - name: logout
+      run: |
+        az logout
 
     - name: ZAP Scan
       uses: zaproxy/action-api-scan@v0.9.0
       with:
         target: 'https://tbernardo-todoapp-api-dast.azurewebsites.net/swagger/v1/swagger.json'
         format: 'openapi'
+
+    - name: terraform destroy
+      run: |
+        terraform destroy tfplan
