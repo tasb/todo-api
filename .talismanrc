@@ -1,4 +1,8 @@
 fileignoreconfig:
+- filename: .github/workflows/main.yml
+  checksum: 825a13a5a98f1b73e5c549bbe5e8f075caf13f0f46d2822ff52c533cb43ce293
+- filename: .github/workflows/pr-webapp.yml
+  checksum: f60d4644ae2260de70e4aaae8f6b3f0373479448fdf52d5c45a0033e45f47ec7
 - filename: .github/workflows/pr.yml
   checksum: 2c72faa22e2a32078a4ccf4b3cb0ae774a97818f75801f108a0551cccfb57481
 - filename: .gitignore
@@ -11,6 +15,8 @@ fileignoreconfig:
   checksum: 2798694bc0233cd8349c3c23ee88a985ebfc0d4baf3a931d0939e7e7901a6786
 - filename: deploy/terraform/todo-api/main.tf
   checksum: 7626e97416690eed6bb2a2b85a83f9f29fd9280d3401464caa368a2017773af8
+- filename: deploy/terraform/todo-webapp/main.tf
+  checksum: 16e4323d445cb074e84db04af88b98382bec43bc258429a14746d3a11a41daa8
 - filename: docker-compose.override.yml
   checksum: d3c2b476f3e85717dd4ac327991ba18577c0c50cdb3277421634cc2861730b9f
 - filename: src/TodoAPI.Tests/obj/Debug/net6.0/TodoAPI.Tests.AssemblyInfoInputs.cache
