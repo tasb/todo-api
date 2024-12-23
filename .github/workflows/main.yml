@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: |
         dotnet build --no-restore src/TodoAPI/TodoAPI.csproj
-        dotnet restore src/TodoWebapp/TodoWebapp.csproj
+        dotnet build --no-restore src/TodoWebapp/TodoWebapp.csproj
     
     - name: Publish TodoAPI
       run: |
