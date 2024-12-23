@@ -1,4 +1,4 @@
-name: TodoAPI PR
+name: TodoAPP Main
 
 on:
   workflow_dispatch:
